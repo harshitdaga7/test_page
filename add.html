@@ -1,0 +1,59 @@
+<html>
+	<head>
+		<title>Bouquet Management System- add info</title>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+		
+	</head>
+	<style>
+	.Heading { background-color: #3a8bcd;
+	text-align: center;
+	}
+	.tablestyle { background-color: #3a8bcd;
+	text-align: center;
+	}
+	.blackbg{ background-color: #000000;
+	
+	}
+	label{ color: white;}
+	</style>
+	<body class="d-flex flex-column h-100 container blackbg">
+		<h1 class="Heading">TCET Bouquet Management App</h1>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				  <div class="navbar-nav">
+					<a class="nav-link" href="index.html">Listing</a>
+					<a class="nav-link active" aria-current="page" href="add.html">Add New</a>
+				  </div>
+				</div>
+			  </div>
+			</nav>
+		</header>
+		
+		<h3 class="Heading">Add Document</h3>
+		
+		<form onsubmit="return false;">
+		  <div class="mb-3">
+			<label for="name" class="form-label">Flower Name</label>
+			<input type="text" class="form-control" id="name" autofocus>
+		  </div>
+		  <div class="mb-3">
+			<label for="exampleInputPassword1" class="form-label">Color</label>
+			<input type="text" class="form-control" id="age">
+		  </div>
+		  <div class="mb-3">
+			<label for="city" class="form-label">Available Qunatity</label>
+			<input type="text" class="form-control" id="city">
+		  </div>
+		  <button class="btn btn-primary" onclick="return postData()">Submit</button>
+		  <a href="index.html" class="btn btn-primary">Cancel</a>
+		</form>
+		
+	
+	</body>
+	<script src="script.js"></script>
+	<script>
+	</script>
+</html>
