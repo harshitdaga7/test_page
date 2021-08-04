@@ -12,10 +12,10 @@
 	.tablestyle { background-color: #3a8bcd;
 	text-align: center;
 	}
-	.blackbg{ background-color: #000000;
+	.blackbg{ background-color: #dce0df;
 	
 	}
-	label{ color: white;}
+	label{ color: black;}
 	</style>
 	<body class="d-flex flex-column h-100 container blackbg">
 		<h1 class="Heading">TCET Bouquet Management App</h1>
@@ -37,15 +37,24 @@
 		<form onsubmit="return false;">
 		  <div class="mb-3">
 			<label for="name" class="form-label">Flower Name</label>
-			<input type="text" class="form-control" id="name" autofocus>
+			<input type="text" class="form-control" id="name" placeholder="Enter Title/Description"autofocus >
 		  </div>
 		  <div class="mb-3">
-			<label for="exampleInputPassword1" class="form-label">Color</label>
-			<input type="text" class="form-control" id="age">
+			<label for="color" class="form-label">Color</label>
+			<input type="text" class="form-control" id="color" placeholder="Enter Color">
 		  </div>
 		  <div class="mb-3">
-			<label for="city" class="form-label">Available Qunatity</label>
-			<input type="text" class="form-control" id="city">
+			<label for="availability" class="form-label">Available Qunatity</label>
+			<input type="text" class="form-control" id="availability" placeholder="Enter Available Qunatity">
+		  </div>
+		  <div class="mb-3">
+			<label for="price" class="form-label">Price</label>
+			<input type="text" class="form-control" id="price" placeholder="Enter Price">
+		  </div>
+
+		  <div class="mb-3">
+			<label for="image" class="form-label">Image</label>
+			<input type="file" class="form-control" id="image">
 		  </div>
 		  <button class="btn btn-primary" onclick="return postData()">Submit</button>
 		  <a href="index.html" class="btn btn-primary">Cancel</a>
