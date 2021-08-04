@@ -1,17 +1,17 @@
 //const api_url = "<heroku_app_url>"
-const api_url = "https://thetestbouquet.herokuapp.com/user"
+const api_url = "https://esdprojectfive.herokuapp.com/"
 
 function loadData(records = []) {
 	var table_data = "";
 	for(let i=0; i<records.length; i++) {
-		table_data += `<tr>`;
-		table_data += `<td>${records[i].name}</td>`;
-		table_data += `<td>${records[i].age}</td>`;
-		table_data += `<td>${records[i].city}</td>`;
+
+		var _id = records[i].split('/').pop();
+		table_data += `<tr id = "${_id}">`;
+		table_data += `<td> <a href = "${records[i]}"</td>`;
 		table_data += `<td>`;
-		table_data += `<a href="edit.html?id=${records[i]._id}"><button class="btn btn-primary">Edit</button></a>`;
+		table_data += `<button class="btn btn-primary" onlclick = editData(${records[i]},${id)})>Edit</button>`;
 		table_data += '&nbsp;&nbsp;';
-		table_data += `<button class="btn btn-danger" onclick=deleteData('${records[i]._id}')>Delete</button>`;
+		table_data += `<button class="btn btn-danger" onclick=deleteData(${id})>Delete</button>`;
 		table_data += `</td>`;
 		table_data += `</tr>`;
 	}
@@ -20,14 +20,20 @@ function loadData(records = []) {
 }
 
 function getData() {
-	fetch(api_url)
+	fetch(api_url + '/flowers/find')
 	.then((response) => response.json())
-	.then((data) => { 
-		console.table(data); 
-		loadData(data);
-	});
+	.then((result) => { 
+		console.table(result.data); 
+		loadData(result.data);
+	}).catch(err => console.log(err));
 }
 
+
+function editData(link,id)
+{
+
+	fetch(link);
+}
 
 function getDataById(id) {
 	fetch(`${api_url}/${id}/dindayal`)
