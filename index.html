@@ -19,13 +19,84 @@
 	<body class="d-flex flex-column h-100 container blackbg">
 		<h1 class="Heading">TCET Bouquet Management App</h1>
 		<header>
-			<nav  class="navbar navbar-expand-lg navbar-light bg-light">
+			<nav  class="navbar navbar-expand-lg navbar-dark" style="background-color: #5e6363;">
 			  <div class="container-fluid">
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				  <div class="navbar-nav">
-					<a class="nav-link active" aria-current="page" href="#">Listing</a>
-					&nbsp;&nbsp;
-					<a class="nav-link" href="./add.html">Add New</a>
+
+						 <li class="nav-item">
+			        <a class="nav-link active" aria-current="page" href="#">Listing</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="./add.html">Add New</a>
+			      </li>
+
+
+			    &nbsp;&nbsp;
+
+			   <li class="nav-item dropdown">
+
+			   		<div class="input-group mb-3">
+									<label class="input-group-text" for="sort">Sort By</label>
+									<select class="form-select" id="sort">
+									  <option selected>Choose...</option>
+									  <option value="title">title</option>
+									  <option value="color">color</option>
+									  <option value="availability">availability</option>
+									  <option value = "price">price</option>
+									</select>
+							</div>
+
+        </li>
+
+
+        	&nbsp;&nbsp;
+
+			   <li class="nav-item dropdown">
+
+			   		<div class="input-group mb-3">
+									<label class="input-group-text" for="order">Order</label>
+									<select class="form-select" id="order">
+									  <option selected>Choose...</option>
+									  <option value="Ascending">Ascending</option>
+									  <option value="Descending">Descending</option>
+									</select>
+							</div>
+
+        </li>
+
+
+        		&nbsp;&nbsp;
+        		<li class="nav-item">
+
+        			<div class="input-group mb-3">
+								  <span class="input-group-text" id="inputGroup-sizing-default">Limit</span>
+								  <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id = "limit">
+							</div>
+
+			      </li>
+
+
+
+			     &nbsp;&nbsp;
+			     <li class="nav-item">
+
+        			<div class="input-group mb-3">
+								  <span class="input-group-text" id="inputGroup-sizing-default">Color</span>
+								  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" id = "color">
+							</div>
+
+			      </li>
+
+
+			      &nbsp;&nbsp;&nbsp;
+			      <li class="nav-item">
+
+			      	<button class="btn btn-primary" type="submit" onclick = "filterHandler()">Apply</button>
+
+			      </li>
+
+
 				  </div>
 				</div>
 			  </div>
@@ -62,12 +133,62 @@
     </div>
   </div>
 </div>
-		
+
 		
 	</body>
 	
 	<script src="./script.js"></script>
 	<script>
+		
+
 		getData();
+
+
+
+		function filterHandler()
+		{
+			 var srt = document.getElementById("sort").value;
+			 var ord_s = document.getElementById("order").value;
+			 var limit = Number(document.getElementById("limit").value);
+			 var ord = (ord_s === "Descending") ? -1 : 1;
+			 var clr = document.getElementById("color").value;
+
+
+			 console.log(srt,ord_s,limit,ord,clr)
+
+
+
+			  var  param = {};
+
+
+			 if(!(srt === "Choose..."))param.sort = srt;
+			 if(limit)param.limit = limit;
+			 if(ord) param.order = ord;
+			 if(clr) param.color = clr;
+
+				
+			 // if(srt === "Choose...")
+
+			 	const params = new URLSearchParams(param);
+				console.log(params.toString());
+
+				var appnd  = params.toString();
+
+				var lnk = 'flowers/find?' + appnd;
+
+				fetch(api_url + lnk,{
+					method:"GET"
+				})
+				.then((response) => response.json())
+				.then((result) =>{
+
+					console.table(result.data);
+					loadData(result.data);
+
+				})
+
+
+		}
+
 	</script>
 </html>
