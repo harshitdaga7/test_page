@@ -35,7 +35,7 @@ function loadData(records = []) {
 }
 
 function getData() {
-	fetch(api_url + 'flowers/find')
+	fetch(api_url + 'flowers/find') /// hsitin/flowers/find
 	.then((response) => response.json())
 	.then((result) => { 
 		console.table(result.data); 
